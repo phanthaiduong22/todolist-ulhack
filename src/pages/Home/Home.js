@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-// import "./Login.css";
 class Home extends Component {
   constructor() {
     super();

@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
+import Register from "./pages/Register/Register";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 class App extends Component {
   constructor(props) {
@@ -26,6 +27,9 @@ class App extends Component {
             <li>
               <Link to="/login">Login</Link>
             </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
           </ul>
 
           <Switch>
@@ -34,6 +38,9 @@ class App extends Component {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
           </Switch>
         </div>
