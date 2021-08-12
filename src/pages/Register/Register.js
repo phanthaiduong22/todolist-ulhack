@@ -5,7 +5,7 @@ import { Col, Row, Form } from "react-bootstrap";
 class Register extends Component {
   constructor() {
     super();
-    this.state = { email: "", password: "" };
+    this.state = { email: "", password: "", realemail: "admin" };
 
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -18,7 +18,7 @@ class Register extends Component {
     this.setState({ password: event.target.value });
   }
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.email + this.state.password);
+    alert("A name was submitted: ");
     event.preventDefault();
   }
   render() {

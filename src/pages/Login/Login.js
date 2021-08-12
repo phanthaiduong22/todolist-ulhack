@@ -1,24 +1,37 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import { Col, Row, Form } from "react-bootstrap";
+import callAPI from "../../utils/apiCaller";
+
 // import "./Login.css";
 class Login extends Component {
   constructor() {
     super();
-    this.state = { email: "", password: "" };
+    this.state = { username: "", password: "" };
 
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChangeEmail(event) {
-    this.setState({ email: event.target.value });
+    this.setState({ username: event.target.value });
   }
   handleChangePassword(event) {
     this.setState({ password: event.target.value });
   }
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.email + this.state.password);
+    let { username, password } = this.state;
+    callAPI("/login", "POST", {
+      username,
+      password,
+    })
+      .then((response) => {
+        // this.setState({ redirect: true });
+        console.log("login success");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     event.preventDefault();
   }
   render() {
@@ -31,7 +44,7 @@ class Login extends Component {
             <div className="form-group">
               <label>Email address</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
                 placeholder="Enter email"
                 value={this.state.email}
