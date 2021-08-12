@@ -1,17 +1,31 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
+import { Container } from "react-bootstrap";
+import { Col, Row, Form } from "react-bootstrap";
 // import "./Login.css";
 class Login extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { email: "", password: "" };
+
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChangeEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+  handleChangePassword(event) {
+    this.setState({ password: event.target.value });
+  }
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.email + this.state.password);
+    event.preventDefault();
   }
   render() {
     return (
-      <div>
-        <div class="row-2"></div>
-        <div class="row">
-          <form>
+      <Container>
+        <Row>
+          <form className="block-example border" onSubmit={this.handleSubmit}>
             <h3>Sign In</h3>
 
             <div className="form-group">
@@ -20,6 +34,8 @@ class Login extends Component {
                 type="email"
                 className="form-control"
                 placeholder="Enter email"
+                value={this.state.email}
+                onChange={this.handleChangeEmail}
               />
             </div>
 
@@ -29,6 +45,8 @@ class Login extends Component {
                 type="password"
                 className="form-control"
                 placeholder="Enter password"
+                value={this.state.password}
+                onChange={this.handleChangePassword}
               />
             </div>
 
@@ -52,10 +70,8 @@ class Login extends Component {
               Forgot <a href="#">password?</a>
             </p>
           </form>
-        </div>
-
-        <div class="row-2"></div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
