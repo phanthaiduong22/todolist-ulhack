@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
+import Reward from "./pages/Reward/Reward";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route exact path="/home" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/reward" component={Reward} />
       </Switch>
     </Router>
   </React.StrictMode>,
