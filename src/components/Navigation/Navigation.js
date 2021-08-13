@@ -15,6 +15,7 @@ class Navigation extends Component {
   };
   handleLogoutClick = () => {
     localStorage.removeItem("username");
+    window.location.reload();
   };
   render() {
     let LogOut = null;

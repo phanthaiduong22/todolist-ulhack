@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import callAPI from "../../utils/apiCaller";
 import Alert from "../../components/Alert/Alert";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 // import "./Login.css";
 class Login extends Component {
@@ -36,7 +36,7 @@ class Login extends Component {
     })
       .then((response) => {
         window.localStorage.setItem("username", response.data.username);
-        this.setState({ redirect: "/home" });
+        window.location.reload();
       })
       .catch((e) => {
         this.setState({ error: "Login unsuccessful" });
@@ -49,7 +49,7 @@ class Login extends Component {
     if (error) showError = <Alert error={error} />;
     if (redirect) {
       this.setState({ redirect: "" });
-      return <Redirect to={redirect} />;
+      return <Redirect to={redirect} replace />;
     }
     return (
       <Container>
