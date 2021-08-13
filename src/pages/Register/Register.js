@@ -19,7 +19,7 @@ class Register extends Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangeRePassword = this.handleChangeRePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
   }
   componentDidMount = () => {
     const username = localStorage.getItem("username");
@@ -36,11 +36,11 @@ class Register extends Component {
   handleChangeRePassword(event) {
     this.setState({ rePassword: event.target.value });
   }
-  handleSubmit(event) {
+  handleSubmitRegister(event) {
     let { username, password, rePassword } = this.state;
     if (password !== rePassword) {
       this.setState({ error: "Invalid username or password" });
-	  console.log()
+      event.preventDefault();
       return;
     }
     callAPI("/account/register", "POST", {
@@ -69,9 +69,9 @@ class Register extends Component {
         <Row>
           <form
             className="block-example border rounded-3 p-5	"
-            onSubmit={this.handleSubmit}
+            onSubmit={this.handleSubmitRegister}
           >
-            <h3>Sign In</h3>
+            <h3>Register</h3>
             {showError}
             <div className="form-group">
               <label>Username</label>

@@ -7,8 +7,8 @@ import { Link, Redirect } from "react-router-dom";
 
 // import "./Login.css";
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { username: "", password: "", redirect: "" };
 
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -61,7 +61,7 @@ class Login extends Component {
             <h3>Sign In</h3>
             {showError}
             <div className="form-group">
-              <label>Email address</label>
+              <label>Username</label>
               <input
                 type="text"
                 className="form-control"
