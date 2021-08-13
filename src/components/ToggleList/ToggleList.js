@@ -1,52 +1,22 @@
 import React, { Component } from "react";
 import { Accordion, Container } from "react-bootstrap";
+import Home from "../../pages/Home/Home";
 import NewTask from "../NewTask/NewTask";
 import Task from "../Task/Task";
 // import { Navbar, Nav } from "react-bootstrap";
 // import { LinkContainer } from "react-router-bootstrap";
 
 class ToggleList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      tasks: [
-        {
-          name: "test",
-          done: true,
-        },
-        {
-          name: "test1",
-          done: false,
-        },
-      ],
-    };
+		tasks: props.tasks
+	}
   }
-
-  componentDidMount = () => {
-    // api GET /tasks
-    // set tasks
-  };
-
-  addTask(task) {
-    this.setState((state) => {
-      let { tasks } = state;
-      tasks.push({
-        // id: tasks.length === 0 ? 0 : tasks.length,
-        name: task,
-        // done: false
-      });
-      return tasks;
-    });
-  }
-
-  handleKeyPress = (event, task) => {
-    if (event.key === "Enter") {
-      this.addTask(task);
-    }
-  };
 
   render() {
     let { tasks } = this.state;
+	console.log(tasks)
     return (
       <div>
         <Accordion>

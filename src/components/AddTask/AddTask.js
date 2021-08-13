@@ -36,7 +36,7 @@ class AddTaskButton extends Component {
   };
   onSubmit = () => {
     let { username, task_name, is_importance, due_date } = this.state;
-    callAPI("/task", "POST", {
+    callAPI("/tasks", "POST", {
       username,
       task_name,
       is_importance,

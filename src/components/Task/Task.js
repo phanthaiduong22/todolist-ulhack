@@ -3,7 +3,7 @@ import React from "react";
 
 function Task({ task }) {
   // const className = "task" + (!task.done ? "" : "-checked")
-  console.log(task.name);
+  console.log(task.task_name);
   const className = "task";
 
   return (
@@ -15,7 +15,7 @@ function Task({ task }) {
             <Icon class="icon-sm" href={icons.check}/>
           </span>
         </label> */}
-        <p className="simple-text left-space-sm todo-heading">{task.name}</p>
+        <p className="simple-text left-space-sm todo-heading">{task.task_name}</p>
       </div>
       {/* <div className="row g1 right-space-sm">
         <IconBtn class="tertiary-icon-btn-sm" iconClass="icon-sm" href={icons.pen} onClick={props.openModal}/>
