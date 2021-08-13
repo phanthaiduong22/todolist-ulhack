@@ -3,6 +3,10 @@
 
 $primary: #bfd028;
 
+.task-checked {
+  background: #45e357 !important
+}
+
 .task-important{
   background: #e88128 !important
 }
@@ -11,14 +15,22 @@ $primary: #bfd028;
   background: #e14747 !important
 }
 
+.border-item{
+  height: 20px;
+  border: 1cm;
+  border: #e14747;
+}
 .light{
   background: #a8a8ac;
 };
-
+.simple-text{
+  font-size: x-large;
+}
 .task,
 .task-checked,
 .task-important,
 .task-urgent {
+  vertical-align: middle;
   &:hover {
     box-shadow: $todo-hover;
   }
@@ -50,58 +62,58 @@ $primary: #bfd028;
   background: #25262b;
 }
 
-// .task-checked .simple-text {
-//   color: var(--sub-text-color);
-//   text-decoration: line-through;
-// }
+.task-checked .simple-text {
+  color: var(--sub-text-color);
+  text-decoration: line-through;
+}
 
-// .task-checked .row .icon-btn {
-//   display: none;
-//   background: #25262b;
-// }
+.task-checked .row .icon-btn {
+  display: none;
+  background: #25262b;
+}
 
-// .task-checked .check-input:checked + .check-box {
-//   background: $blue-t1;
-// }
+.task-checked .check-input:checked + .check-box {
+  background: $blue-t1;
+}
 
-// .task-checked:hover .row .icon-btn:last-child {
-//   display: flex;
-// }
+.task-checked:hover .row .icon-btn:last-child {
+  display: flex;
+}
 
-// .check .check-input {
-//   position: absolute;
-//   appearance: none;
-//   -moz-appearance: none;
-//   -webkit-appearance: none;
-// }
+.check .check-input {
+  position: absolute;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 
-// .check {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: row;
-// }
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
 
-// .check-box,
-// .check-box-disabled {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background: #cfd1db;
-// }
+.check-box,
+.check-box-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #cfd1db;
+}
 
-// .check-box .icon-sm,
-// .check-box-disabled .icon-sm {
-//   color: #cfd1db;
-// }
+.check-box .icon-sm,
+.check-box-disabled .icon-sm {
+  color: #cfd1db;
+}
 
-// .check-input:checked + .check-box {
-//   background-color: $blue;
-// }
+.check-input:checked + .check-box {
+  background-color: $blue;
+}
 
-// .check-input:focus + .check-box {
-//   box-shadow: $focus;
-// }
+.check-input:focus + .check-box {
+  box-shadow: $focus;
+}
 
 // @media (min-width: 1200px) {
 //   .task,
@@ -119,55 +131,55 @@ $primary: #bfd028;
 //   }
 // }
 
-// @media (min-width: 992px) and (max-width: 1199px) {
-//   .task,
-//   .task-checked {
-//     width: 550px;
-//     height: 75px;
-//     border-radius: $radius-lg;
-//   }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .task,
+  .task-checked {
+    width: 550px;
+    height: 75px;
+    border-radius: $radius-lg;
+  }
 
-//   .check-box,
-//   .check-box-disabled {
-//     width: 2rem;
-//     height: 2rem;
-//     border-radius: $radius-md;
-//   }
-// }
+  .check-box,
+  .check-box-disabled {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-md;
+  }
+}
 
-// @media (min-width: 768px) and (max-width: 991px) {
-//   .task,
-//   .task-checked {
-//     width: 500px;
-//     height: 75px;
-//     border-radius: $radius-md;
-//   }
+@media (min-width: 768px) and (max-width: 991px) {
+  .task,
+  .task-checked {
+    width: 500px;
+    height: 75px;
+    border-radius: $radius-md;
+  }
 
-//   .check-box,
-//   .check-box-disabled {
-//     width: 2rem;
-//     height: 2rem;
-//     border-radius: $radius-md;
-//   }
-// }
+  .check-box,
+  .check-box-disabled {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-md;
+  }
+}
 
-// @media (min-width: 481px) and (max-width: 768px){
+@media (min-width: 481px) and (max-width: 768px){
 
-// }
+}
 
-// @media (max-width: 480px){
-//   .task,
-//   .task-checked {
-//     width: 350px;
-//     height: 60px;
-//     border-radius: $radius-lg;
-//   }
+@media (max-width: 480px){
+  .task,
+  .task-checked {
+    width: 350px;
+    height: 60px;
+    border-radius: $radius-lg;
+  }
 
-//   .check-box,
-//   .check-box-disabled {
-//     width: 2rem;
-//     height: 2rem;
-//     border-radius: $radius-md;
-//   }
-// }
+  .check-box,
+  .check-box-disabled {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-md;
+  }
+}
 
