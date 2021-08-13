@@ -1,29 +1,23 @@
 import React, { Component } from "react";
-import { Accordion, Container } from "react-bootstrap";
-import Home from "../../pages/Home/Home";
-import NewTask from "../NewTask/NewTask";
+import { Accordion } from "react-bootstrap";
 import Task from "../Task/Task";
-// import { Navbar, Nav } from "react-bootstrap";
-// import { LinkContainer } from "react-router-bootstrap";
 
 class ToggleList extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-		tasks: props.tasks
-	}
-  }
+	super(props)
+  } 
 
   render() {
-    let { tasks } = this.state;
-	console.log(tasks)
+    // let { tasks } = this.props.tasks;
+	// console.log(tasks)
+	// console.log(this.props)
     return (
       <div>
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Recently Assigned</Accordion.Header>
             <Accordion.Body>
-              {tasks.map((task) => {
+              {this.props.tasks.map((task) => {
                 return <Task task={task} />;
               })}
             </Accordion.Body>
@@ -33,4 +27,24 @@ class ToggleList extends Component {
     );
   }
 }
+// function ToggleList(props) {
+// 	return (
+// 		<div>
+//         <Accordion>
+//           <Accordion.Item eventKey="0">
+//             <Accordion.Header>Recently Assigned</Accordion.Header>
+//             <Accordion.Body>
+//               {this.props.tasks.map((task) => {
+//                 return <Task task={task} />;
+//               })}
+//             </Accordion.Body>
+//           </Accordion.Item>
+//         </Accordion>
+//       </div>
+// 	)
+// }
+
+
 export default ToggleList;
+
+
