@@ -9,7 +9,7 @@ function Task({ task, ...props }) {
 
   return (
 	<>	
-		<div class="light p-3 mb-2 rounded border border-dark">
+		<div class="bg-light p-3 mb-2 rounded border border-dark">
 			<Container>
 				<Row>
 					<Col>{task.task_id}</Col>
