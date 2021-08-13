@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import { Col, Row, Form } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import callAPI from "../../utils/apiCaller";
 
 // import "./Login.css";
