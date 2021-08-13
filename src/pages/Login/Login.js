@@ -2,17 +2,26 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import callAPI from "../../utils/apiCaller";
+import Alert from "../../components/Alert/Alert";
+import { Redirect } from "react-router-dom";
 
 // import "./Login.css";
 class Login extends Component {
   constructor() {
     super();
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", redirect: "" };
 
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount = () => {
+    const username = localStorage.getItem("username");
+    console.log(username);
+    if (username !== null) {
+      this.setState({ redirect: "/home" });
+    }
+  };
   handleChangeEmail(event) {
     this.setState({ username: event.target.value });
   }
@@ -26,21 +35,28 @@ class Login extends Component {
       password,
     })
       .then((response) => {
-        // this.setState({ redirect: true });
-        console.log("login success");
+        window.localStorage.setItem("username", response.data.username);
+        this.setState({ redirect: "/home" });
       })
       .catch((e) => {
-        console.log(e);
+        this.setState({ error: "Login unsuccessful" });
       });
     event.preventDefault();
   }
   render() {
+    let { error, redirect } = this.state;
+    let showError = null;
+    if (error) showError = <Alert error={error} />;
+    if (redirect) {
+      this.setState({ redirect: "" });
+      return <Redirect to={redirect} />;
+    }
     return (
       <Container>
         <Row>
           <form className="block-example border" onSubmit={this.handleSubmit}>
             <h3>Sign In</h3>
-
+            {showError}
             <div className="form-group">
               <label>Email address</label>
               <input
