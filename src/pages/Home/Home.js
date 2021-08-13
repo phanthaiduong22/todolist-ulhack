@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import AddTaskButton from "../../components/AddTask/AddTask";
 import ToggleList from "../../components/ToggleList/ToggleList";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { MDBInput, MDBProgress } from "mdbreact";
 class Home extends Component {
   constructor() {
@@ -36,6 +37,7 @@ class Home extends Component {
           </div>
 
           <ToggleList />
+          <ProgressBar />
         </div>
       </>
     );
