@@ -26,7 +26,7 @@ class Home extends Component {
     }
   };
   render() {
-    let { redirect, tasks} = this.state;
+    let { redirect, tasks, username} = this.state;
     console.log(tasks)
     if (redirect) {
       this.setState({ redirect: "" });
@@ -35,7 +35,7 @@ class Home extends Component {
     return (
       <>
           <AddTaskButton />
-          <ToggleList tasks={tasks}/>
+          <ToggleList tasks={tasks} username={username}/>
           <Moment format="YYYY/MM/DD"></Moment>
           {/* <ProgressBar /> */}
       </>

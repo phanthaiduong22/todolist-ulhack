@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
 import Task from "../Task/Task";
-import TaskTable from "../TaskTable/TaskTable"
 
 class ToggleList extends Component {
   constructor(props) {
@@ -9,10 +8,11 @@ class ToggleList extends Component {
   } 
 
   render() {
-	console.log(this.props)
+	console.log(`user: ${this.props.username}`)
     return (
       <>
-	  	<Container><Row>
+	  	<Container>
+			<Row>
 			{/* <Col></Col> */}
 			<Col>
 				<Accordion>
@@ -20,7 +20,7 @@ class ToggleList extends Component {
 					<Accordion.Header>Recently Assigned</Accordion.Header>
 					<Accordion.Body>
 					{this.props.tasks.map((task) => {
-						return <Task task={task} />;
+						return <Task username={this.props.username} task={task} />;
 					})}
 					</Accordion.Body>
 				</Accordion.Item>
