@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import NewTask from "../../components/NewTask/NewTask"
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ToggleList from "../../components/ToggleList/ToggleList"
 import { MDBInput, MDBProgress } from "mdbreact";
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -28,7 +29,7 @@ class Home extends Component {
         <MDBInput label="Small input" size="sm" />
 
         <div>
-        <MDBProgress material value={50} className="my-s" />
+          <ProgressBar />
         </div>
 
         <ToggleList />

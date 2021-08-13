@@ -1,7 +1,7 @@
 import React from "react";
 // import {icons} from "../../modules/icons";
 
-function Task({task, ...props}) {
+function Task(task, props) {
 //   const className = "task" + (!task.done ? "" : "-checked")
   const className = "task" 
 
@@ -15,7 +15,7 @@ function Task({task, ...props}) {
           </span>
         </label> */}
         {/* <p className="simple-text left-space-sm todo-heading">{task.name}</p> */}
-        <p className="simple-text left-space-sm todo-heading">test</p>
+        <p className="simple-text left-space-sm todo-heading">{task.name}</p>
       </div>
       {/* <div className="row g1 right-space-sm">
         <IconBtn class="tertiary-icon-btn-sm" iconClass="icon-sm" href={icons.pen} onClick={props.openModal}/>
