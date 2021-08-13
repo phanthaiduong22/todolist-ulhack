@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, DropdownButton, Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import DatePicker from "react-datepicker";
 import callAPI from "../../utils/apiCaller";
-import Moment from 'react-moment';
-
+import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-class AddTaskButton extends Component {
+class AddTask extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,13 +16,24 @@ class AddTaskButton extends Component {
       is_importance: false,
       due_date: new Date(),
       showModal: false,
+      sections: [],
+      section_id: -1,
     };
   }
   componentDidMount = () => {
     const username = localStorage.getItem("username");
-    this.setState({ username });
-    console.log(username);
-    if (username !== null) {
+    if (username != null) {
+      this.setState({ username });
+
+      callAPI(`/sections/${username}`, "GET", {
+        username,
+      })
+        .then((response) => {
+          this.setState({ sections: response.data.sections });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
   };
   taskNameOnChange = (e) => {
@@ -36,18 +46,19 @@ class AddTaskButton extends Component {
     this.setState({ due_date: date });
   };
   onSubmit = () => {
-    let { username, task_name, is_importance, due_date } = this.state;
+    let { username, task_name, is_importance, due_date, section_id } =
+      this.state;
+    const dateTime = moment(due_date, "DD/MM/YYYY").format("YYYY-MM-DD");
     callAPI("/tasks", "POST", {
       username,
       task_name,
       is_importance,
-      due_date,
+      due_date: dateTime,
+      section_id,
     })
       .then((response) => {
-        // this.setState({ redirect: true });
-        // console.log("login success");
         this.handleClose();
-        window.location.reload()
+        window.location.reload();
       })
       .catch((e) => {
         console.log(e);
@@ -57,11 +68,14 @@ class AddTaskButton extends Component {
     this.setState({ showModal: false });
   };
   handleShow = () => {
-    console.log("hello");
     this.setState({ showModal: true });
+  };
+  handleDropDownSelect = (e) => {
+    this.setState({ section_id: Number(e.target.value) });
   };
 
   render() {
+    let { sections } = this.state;
     return (
       <>
         <Button variant="primary" onClick={this.handleShow}>
@@ -82,6 +96,25 @@ class AddTaskButton extends Component {
                   onChange={this.taskNameOnChange}
                   value={this.state.task_name}
                 />
+              </Form.Group>
+              <Form.Group
+                className="mb mt-2"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Section Name</Form.Label>
+                <Form.Select
+                  aria-label="Default select example"
+                  onClick={this.handleDropDownSelect}
+                >
+                  <option value={-1}>Choose section</option>
+                  {sections.map((section) => {
+                    return (
+                      <option value={section.section_id}>
+                        {section.section_name}
+                      </option>
+                    );
+                  })}
+                </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3 mt-3" controlId="formBasicCheckbox">
                 <Form.Check
@@ -111,4 +144,4 @@ class AddTaskButton extends Component {
   }
 }
 
-export default AddTaskButton;
+export default AddTask;
