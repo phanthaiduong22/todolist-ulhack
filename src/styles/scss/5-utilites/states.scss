@@ -1,0 +1,29 @@
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.aic {
+  display: flex;
+  align-items: center;
+}
+
+.pic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

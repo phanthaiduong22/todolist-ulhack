@@ -1,27 +1,35 @@
 import React from "react";
+import { Row, Col, Container, FormControl, InputGroup, Table } from "react-bootstrap";
+import "./Task.scss";
 // import {icons} from "../../modules/icons";
 
-function Task({ task }) {
-  // const className = "task" + (!task.done ? "" : "-checked")
-  console.log(task.name);
-  const className = "task";
+function Task({ task, ...props }) {
+  const className = "task" + (task.is_done == 0 ? "" : "-checked")
+  console.log(task.is_done);
 
   return (
-    <section className={className}>
-      <div className="row">
-        {/* <label className="check">
-          <input className="check-input" type="checkbox" checked={task.done} onChange={props.doneTask}/>
-          <span className="check-box left-space-sm" id="checkbox">
-            <Icon class="icon-sm" href={icons.check}/>
-          </span>
-        </label> */}
-        <p className="simple-text left-space-sm todo-heading">{task.name}</p>
-      </div>
-      {/* <div className="row g1 right-space-sm">
-        <IconBtn class="tertiary-icon-btn-sm" iconClass="icon-sm" href={icons.pen} onClick={props.openModal}/>
-        <IconBtn class="tertiary-icon-btn-sm" iconClass="icon-sm" href={icons.delete} onClick={props.deleteTask}/>
-      </div> */}
-    </section>
+	<>	
+		<div class="bg-light p-3 mb-2 rounded border border-dark">
+			<Container>
+				<Row>
+					<Col>{task.task_id}</Col>
+					<Col>{task.task_name}</Col>
+					<Col>{task.due_date}</Col>
+					<Col>{task.is_importance == 1 ? "yes" : "no"}</Col>
+				</Row>
+			</Container>
+		</div>
+		{/* <Table striped bordered hover>
+				<tbody>
+					<tr>
+						<td>{task.task_id}</td>
+						<td>{task.task_name}</td>	
+						<td>{task.due_date}</td>
+						<td>{task.is_importance == 1 ? "yes" : "no"}</td>
+					</tr>
+				</tbody>
+		</Table> */}
+	</>
   );
 }
 export default Task;

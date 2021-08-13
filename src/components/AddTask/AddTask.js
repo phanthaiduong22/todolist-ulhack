@@ -46,6 +46,7 @@ class AddTaskButton extends Component {
         // this.setState({ redirect: true });
         // console.log("login success");
         this.handleClose();
+        window.location.reload()
       })
       .catch((e) => {
         console.log(e);

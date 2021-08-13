@@ -1,0 +1,68 @@
+@import "../1-global/global";
+
+.primary-btn-sm, .primary-btn-md, .primary-btn-lg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $blue;
+  border-radius: $radius-md;
+  color: $white;
+  &:hover {
+    box-shadow: $hover;
+  }
+  &:focus {
+    box-shadow: $focus;
+  }
+  &:disabled {
+    background: $light-blue;
+    pointer-events: none;
+  }
+}
+
+.primary-btn-sm, .secondary-btn-sm {
+  width: 100px;
+  height: 30px;
+}
+
+.primary-btn-md,
+.secondary-btn-md {
+  width: 130px;
+  height: 35px;
+}
+
+.primary-btn-lg,
+.secondary-btn-lg {
+  width: 150px;
+  height: 40px;
+}
+
+.secondary-btn-sm,
+.secondary-btn-md,
+.secondary-btn-lg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-bg);
+  border-radius: $radius-md;
+  border: $secondary-btn-border;
+  color: $blue;
+  font-size: $simple-text;
+  &:hover {
+    border: $blue-border;
+  }
+  &:focus {
+    border: $focus;
+  }
+}
+
+.tertiary-btn-sm,
+.tertiary-btn-md,
+.tertiary-btn-lg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  font-size: $simple-text;
+  background: var(-primary-bg);
+  border-radius: $radius-md;
+}

@@ -1,66 +1,38 @@
 import React, { Component } from "react";
-import { Accordion, Container } from "react-bootstrap";
-import NewTask from "../NewTask/NewTask";
+import { Accordion, Col, Container, Row } from "react-bootstrap";
 import Task from "../Task/Task";
-// import { Navbar, Nav } from "react-bootstrap";
-// import { LinkContainer } from "react-router-bootstrap";
+import TaskTable from "../TaskTable/TaskTable"
 
 class ToggleList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      tasks: [
-        {
-          name: "test",
-          done: true,
-        },
-        {
-          name: "test1",
-          done: false,
-        },
-      ],
-    };
-  }
-
-  componentDidMount = () => {
-    // api GET /tasks
-    // set tasks
-  };
-
-  addTask(task) {
-    this.setState((state) => {
-      let { tasks } = state;
-      tasks.push({
-        // id: tasks.length === 0 ? 0 : tasks.length,
-        name: task,
-        // done: false
-      });
-      return tasks;
-    });
-  }
-
-  handleKeyPress = (event, task) => {
-    if (event.key === "Enter") {
-      this.addTask(task);
-    }
-  };
+  constructor(props) {
+	super(props)
+  } 
 
   render() {
-    let { tasks } = this.state;
+	console.log(this.props)
     return (
-      <div>
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Recently Assigned</Accordion.Header>
-            <Accordion.Body>
-              {tasks.map((task) => {
-                return <Task task={task} />;
-              })}
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-      </div>
+      <>
+	  	<Container><Row>
+			{/* <Col></Col> */}
+			<Col>
+				<Accordion>
+				<Accordion.Item eventKey="0">
+					<Accordion.Header>Recently Assigned</Accordion.Header>
+					<Accordion.Body>
+					{this.props.tasks.map((task) => {
+						return <Task task={task} />;
+					})}
+					</Accordion.Body>
+				</Accordion.Item>
+				</Accordion>
+			</Col>
+			{/* <Col></Col> */}
+		</Row></Container>
+      </>
     );
   }
 }
+
 export default ToggleList;
+
+

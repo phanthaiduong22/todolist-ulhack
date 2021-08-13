@@ -1,0 +1,13 @@
+@import //1-Global
+"scss/1-global/global",
+  //3-Generic
+"scss/3-generic/normalize",
+  //4-Components
+"scss/4-components/buttons",
+  //5-Utilities
+"scss/5-utilites/states",
+  //7-Design-System
+"scss/6-design-system/typography",
+"scss/6-design-system/colors", "scss/6-design-system/spacing", "scss/6-design-system/icons",
+//8-themes
+"scss/7-themes/dark", "scss/7-themes/light", "scss/7-themes/cobalt", "scss/7-themes/deep-ocean";

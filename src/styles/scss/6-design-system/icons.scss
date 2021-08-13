@@ -1,0 +1,47 @@
+@import "../1-global/global";
+
+.icon-xxxs {
+  width: $icon-xxxs;
+  height: $icon-xxxs;
+}
+
+.icon-xxs {
+  width: $icon-xxs;
+  height: $icon-xxs;
+}
+
+.icon-xs {
+  width: $icon-xs;
+  height: $icon-xs;
+}
+
+.icon-sm {
+  width: $icon-sm;
+  height: $icon-sm;
+  fill: var(--sub-icon-color);
+}
+
+.icon-md {
+  width: $icon-md;
+  height: $icon-md;
+}
+
+.icon-lg {
+  width: $icon-lg;
+  height: $icon-lg;
+}
+
+.icon-xl {
+  width: $icon-xl;
+  height: $icon-xl;
+}
+
+.icon-xxl {
+  width: $icon-xxl;
+  height: $icon-xxl;
+}
+
+.icon-xxxl {
+  width: $icon-xxxl;
+  height: $icon-xxxl;
+}
