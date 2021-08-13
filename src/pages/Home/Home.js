@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import AddTaskButton from "../../components/AddTask/AddTask";
-
+import ToggleList from "../../components/ToggleList/ToggleList";
+import { MDBInput, MDBProgress } from "mdbreact";
 class Home extends Component {
   constructor() {
     super();
@@ -22,7 +23,22 @@ class Home extends Component {
       this.setState({ redirect: "" });
       return <Redirect to={redirect} />;
     }
-    return <AddTaskButton />;
+    return (
+      <>
+        <AddTaskButton />
+        <div className="form-group">
+          <MDBInput label="Large input" size="lg" />
+          <MDBInput label="Medium input" />
+          <MDBInput label="Small input" size="sm" />
+
+          <div>
+            <MDBProgress material value={50} className="my-s" />
+          </div>
+
+          <ToggleList />
+        </div>
+      </>
+    );
   }
 }
 
