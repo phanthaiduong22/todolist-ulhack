@@ -18,7 +18,13 @@ class AddTaskButton extends Component {
       showModal: false,
     };
   }
-
+  componentDidMount = () => {
+    const username = localStorage.getItem("username");
+    this.setState({ username });
+    console.log(username);
+    if (username !== null) {
+    }
+  };
   taskNameOnChange = (e) => {
     this.setState({ task_name: e.target.value });
   };
@@ -29,15 +35,17 @@ class AddTaskButton extends Component {
     this.setState({ due_date: date });
   };
   onSubmit = () => {
-    let { task_name, is_importance, due_date } = this.state;
+    let { username, task_name, is_importance, due_date } = this.state;
     callAPI("/task", "POST", {
+      username,
       task_name,
       is_importance,
       due_date,
     })
       .then((response) => {
         // this.setState({ redirect: true });
-        console.log("login success");
+        // console.log("login success");
+        this.handleClose();
       })
       .catch((e) => {
         console.log(e);
