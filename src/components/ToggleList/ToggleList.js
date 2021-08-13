@@ -12,16 +12,22 @@ class ToggleList extends Component {
 	console.log(this.props)
     return (
       <>
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Recently Assigned</Accordion.Header>
-            <Accordion.Body>
-              {this.props.tasks.map((task) => {
-                return <Task task={task} />;
-              })}
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+	  	<Container><Row>
+			{/* <Col></Col> */}
+			<Col>
+				<Accordion>
+				<Accordion.Item eventKey="0">
+					<Accordion.Header>Recently Assigned</Accordion.Header>
+					<Accordion.Body>
+					{this.props.tasks.map((task) => {
+						return <Task task={task} />;
+					})}
+					</Accordion.Body>
+				</Accordion.Item>
+				</Accordion>
+			</Col>
+			{/* <Col></Col> */}
+		</Row></Container>
       </>
     );
   }

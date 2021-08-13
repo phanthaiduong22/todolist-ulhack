@@ -33,15 +33,9 @@ class Home extends Component {
     }
     return (
       <>
-        <AddTaskButton />
-        <div className="form-group">
-          <MDBInput label="Large input" size="lg" />
-          <MDBInput label="Medium input" />
-          <MDBInput label="Small input" size="sm" />
-
+          <AddTaskButton />
           <ToggleList tasks={tasks}/>
           {/* <ProgressBar /> */}
-        </div>
       </>
     );
   }
