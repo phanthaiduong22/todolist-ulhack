@@ -1,9 +1,10 @@
 import React from "react";
 // import {icons} from "../../modules/icons";
 
-function Task(task, props) {
-//   const className = "task" + (!task.done ? "" : "-checked")
-  const className = "task" 
+function Task({ task }) {
+  // const className = "task" + (!task.done ? "" : "-checked")
+  console.log(task.name);
+  const className = "task";
 
   return (
     <section className={className}>
@@ -14,7 +15,6 @@ function Task(task, props) {
             <Icon class="icon-sm" href={icons.check}/>
           </span>
         </label> */}
-        {/* <p className="simple-text left-space-sm todo-heading">{task.name}</p> */}
         <p className="simple-text left-space-sm todo-heading">{task.name}</p>
       </div>
       {/* <div className="row g1 right-space-sm">
@@ -22,6 +22,6 @@ function Task(task, props) {
         <IconBtn class="tertiary-icon-btn-sm" iconClass="icon-sm" href={icons.delete} onClick={props.deleteTask}/>
       </div> */}
     </section>
-  )
+  );
 }
-export default Task
+export default Task;

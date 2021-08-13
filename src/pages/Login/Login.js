@@ -30,7 +30,7 @@ class Login extends Component {
   }
   handleSubmit(event) {
     let { username, password } = this.state;
-    callAPI("/login", "POST", {
+    callAPI("/account/login", "POST", {
       username,
       password,
     })
@@ -54,7 +54,10 @@ class Login extends Component {
     return (
       <Container>
         <Row>
-          <form className="block-example border" onSubmit={this.handleSubmit}>
+          <form
+            className="block-example border rounded-3 p-5	"
+            onSubmit={this.handleSubmit}
+          >
             <h3>Sign In</h3>
             {showError}
             <div className="form-group">
@@ -95,7 +98,7 @@ class Login extends Component {
             <button type="submit" className="btn btn-primary btn-block">
               Submit
             </button>
-            <p className="forgot-password text-right">
+            <p className="forgot-password text-right mt-3">
               Forgot <a href="/">password?</a>
             </p>
           </form>

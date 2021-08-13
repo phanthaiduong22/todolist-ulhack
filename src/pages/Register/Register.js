@@ -1,37 +1,82 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import { Col, Row, Form } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import callAPI from "../../utils/apiCaller";
+import Alert from "../../components/Alert/Alert";
+import { Link, Redirect } from "react-router-dom";
 
 class Register extends Component {
   constructor() {
     super();
-    this.state = { email: "", password: "", realemail: "admin" };
+    this.state = {
+      username: "",
+      password: "",
+      rePassword: "",
+      error: "",
+      redirect: "",
+    };
 
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleChangeRePassword = this.handleChangeRePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount = () => {
+    const username = localStorage.getItem("username");
+    if (username !== null) {
+      this.setState({ redirect: "/home" });
+    }
+  };
   handleChangeEmail(event) {
-    this.setState({ email: event.target.value });
+    this.setState({ username: event.target.value });
   }
   handleChangePassword(event) {
     this.setState({ password: event.target.value });
   }
+  handleChangeRePassword(event) {
+    this.setState({ rePassword: event.target.value });
+  }
   handleSubmit(event) {
-    alert("A name was submitted: ");
+    let { username, password, rePassword } = this.state;
+    if (password !== rePassword) {
+      this.setState({ error: "Invalid username or password" });
+	  console.log()
+      return;
+    }
+    callAPI("/account/register", "POST", {
+      username,
+      password,
+    })
+      .then((response) => {
+        window.localStorage.setItem("username", response.data.username);
+        window.location.reload();
+      })
+      .catch((e) => {
+        this.setState({ error: "Login unsuccessful" });
+      });
     event.preventDefault();
   }
   render() {
+    let { error, redirect } = this.state;
+    let showError = null;
+    if (error) showError = <Alert error={error} />;
+    if (redirect) {
+      this.setState({ redirect: "" });
+      return <Redirect to={redirect} replace />;
+    }
     return (
       <Container>
         <Row>
-          <form className="block-example border" onSubmit={this.handleSubmit}>
+          <form
+            className="block-example border rounded-3 p-5	"
+            onSubmit={this.handleSubmit}
+          >
             <h3>Sign In</h3>
-
+            {showError}
             <div className="form-group">
-              <label>Email address</label>
+              <label>Username</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
                 placeholder="Enter email"
                 value={this.state.email}
@@ -51,6 +96,17 @@ class Register extends Component {
             </div>
 
             <div className="form-group">
+              <label>Re-password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Retype password"
+                value={this.state.rePassword}
+                onChange={this.handleChangeRePassword}
+              />
+            </div>
+
+            <div className="form-group">
               <div className="custom-control custom-checkbox">
                 <input
                   type="checkbox"
@@ -62,12 +118,11 @@ class Register extends Component {
                 </label>
               </div>
             </div>
-
             <button type="submit" className="btn btn-primary btn-block">
               Submit
             </button>
-            <p className="forgot-password text-right">
-              Forgot <a href="#">password?</a>
+            <p className="forgot-password text-right mt-3">
+              Forgot <a href="/">password?</a>
             </p>
           </form>
         </Row>

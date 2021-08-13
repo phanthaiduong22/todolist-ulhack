@@ -7,16 +7,20 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/Navigation/Navigation";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Navigation />
+      <br />
+      <br />
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/home" component={Home} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </Switch>
     </Router>
   </React.StrictMode>,
