@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Container } from "react-bootstrap";
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import callAPI from "../../utils/apiCaller";
 import Alert from "../../components/Alert/Alert";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Register extends Component {
   constructor() {

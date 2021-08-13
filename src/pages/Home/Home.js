@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, Container } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import ToggleList from "../../components/ToggleList/ToggleList";
 import AddTask from "../../components/AddTask/AddTask";
 import AddSection from "../../components/AddSection/AddSection";

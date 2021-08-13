@@ -10,7 +10,7 @@ function Task({task }) {
 	const duration = (moment.duration(moment(task.due_date).diff(moment())))._data.days // Get duration to due date, calculated in hours
 	const formated_date = moment(task.due_date).format("dddd, MMMM Do YYYY")
 	const is_urgent = (duration < 3 && duration > 0) ? true : false // if the task is due in 3 days -> it's urgent
-	const className = "task" + (task.is_done == 1 ? "-checked" : (is_urgent ? "-urgent":(task.is_importance == 1 ? "-important" : "")))
+	const className = "task" + (task.is_done === 1 ? "-checked" : (is_urgent ? "-urgent":(task.is_importance === 1 ? "-important" : "")))
 
 	const username = localStorage.getItem("username"); // Get username from localStorage, for demo purpose
 	// Update the task if done
