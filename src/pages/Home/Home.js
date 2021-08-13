@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import AddTaskButton from "../../components/AddTask/AddTask";
+import AddTask from "../../components/AddTask/AddTask";
+import AddSection from "../../components/AddSection/AddSection";
 import ToggleList from "../../components/ToggleList/ToggleList";
-import { MDBInput} from "mdbreact";
 import callAPI from "../../utils/apiCaller";
+import { Container } from "react-bootstrap";
+
 class Home extends Component {
   constructor() {
     super();
@@ -17,26 +19,26 @@ class Home extends Component {
     const username = localStorage.getItem("username");
     if (username === null) {
       this.setState({ redirect: "/login" });
-    } else
-    {
+    } else {
       callAPI(`/tasks/${username}`, "GET", {})
-      // .then((response) => response.json())
-      .then((response) => this.setState({tasks: response.data}))
+        // .then((response) => response.json())
+        .then((response) => this.setState({ tasks: response.data }));
     }
   };
   render() {
-    let { redirect, tasks} = this.state;
-    console.log(tasks)
+    let { redirect, tasks } = this.state;
+    console.log(tasks);
     if (redirect) {
       this.setState({ redirect: "" });
       return <Redirect to={redirect} />;
     }
     return (
-      <>
-          <AddTaskButton />
-          <ToggleList tasks={tasks}/>
-          {/* <ProgressBar /> */}
-      </>
+      <Container>
+        <AddTask />
+        <AddSection />
+        <ToggleList tasks={tasks} />
+        {/* <ProgressBar /> */}
+      </Container>
     );
   }
 }
