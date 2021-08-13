@@ -21,6 +21,7 @@
     "react-scripts": "4.0.3",
     "react-simple-modal-provider": "^1.7.1",
     "reactjs-popup": "^2.0.5",
+    "sass": "^1.37.5",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

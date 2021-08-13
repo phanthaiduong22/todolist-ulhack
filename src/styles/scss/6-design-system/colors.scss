@@ -1,0 +1,25 @@
+@import "../1-global/global";
+
+.blue {
+  color: $blue;
+}
+
+.error-color {
+  color: $error-color;
+}
+
+.warning-color {
+  color: $warning-color;
+}
+
+.success-color {
+  color: $success-color;
+}
+
+.default-color {
+  color: $default-color;
+}
+
+.light-blue {
+  background: $blue-t1;
+}
