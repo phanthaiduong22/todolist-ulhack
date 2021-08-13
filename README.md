@@ -1,18 +1,18 @@
-#Components
+# Components
 
 - [x] Navigation Bar
 - [ ] Task Bar
 - [ ] Box types task
 - [ ] Logout
 
-#Pages
+# Pages
 
 - [x] Login
 - [ ] Register
 - [ ] Home: Show task users added (<b>priority</b>)
 - [ ] Info: User's information
 
-#Feature
+# Feature
 
 - [ ] Calculate Productivity
 - [ ] Take user's information before creating task for `IMPROTANCE`
