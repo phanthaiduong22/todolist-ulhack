@@ -4,6 +4,7 @@ import AddTaskButton from "../../components/AddTask/AddTask";
 import ToggleList from "../../components/ToggleList/ToggleList";
 import { MDBInput} from "mdbreact";
 import callAPI from "../../utils/apiCaller";
+import Moment from 'react-moment';
 class Home extends Component {
   constructor() {
     super();
@@ -35,6 +36,7 @@ class Home extends Component {
       <>
           <AddTaskButton />
           <ToggleList tasks={tasks}/>
+          <Moment format="YYYY/MM/DD"></Moment>
           {/* <ProgressBar /> */}
       </>
     );

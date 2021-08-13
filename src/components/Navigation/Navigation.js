@@ -25,7 +25,7 @@ class Navigation extends Component {
     return (
       <Navbar bg="light" expand="lg">
         <LinkContainer to="/">
-          <Navbar.Brand>UL Todolist</Navbar.Brand>
+          <Navbar.Brand>ZGoalizt</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

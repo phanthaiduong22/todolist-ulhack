@@ -2,15 +2,23 @@
 @import "../../styles/scss/2-tokens/colors.scss";
 
 $primary: #bfd028;
+
+.task-important{
+  background: #e88128 !important
+}
+
+.task-urgent{
+  background: #e14747 !important
+}
+
 .light{
   background: #a8a8ac;
 };
 
 .task,
-.task-checked {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.task-checked,
+.task-important,
+.task-urgent {
   &:hover {
     box-shadow: $todo-hover;
   }
@@ -19,27 +27,28 @@ $primary: #bfd028;
   }
 }
 
-// .task {
-//   background: var(--primary-bg);
-// }
+.task, 
+.task-important {
+  background: var(--primary-bg);
+}
 
-// .task .row .icon-btn {
-//   display: none;
-//   background: var(--primary-bg);
-// }
+.task .row .icon-btn {
+  display: none;
+  background: var(--primary-bg);
+}
 
 // .task .row .icon-btn:hover,
 // .task-checked .row .icon-btn:hover {
 //   background: var(--icon-btn-hover);
 // }
 
-// .task:hover .row .icon-btn {
-//   display: flex;
-// }
+.task:hover .row .icon-btn {
+  display: flex;
+}
 
-// .task-checked {
-//   background: #25262b;
-// }
+.task-checked {
+  background: #25262b;
+}
 
 // .task-checked .simple-text {
 //   color: var(--sub-text-color);
