@@ -68,7 +68,6 @@ class AddTask extends Component {
     this.setState({ showModal: false });
   };
   handleShow = () => {
-    console.log("hello");
     this.setState({ showModal: true });
   };
   handleDropDownSelect = (e) => {

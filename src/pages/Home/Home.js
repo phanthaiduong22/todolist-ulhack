@@ -13,6 +13,14 @@ class Home extends Component {
       username: "",
       redirect: "",
       tasks: [],
+      sections: [
+        {
+          section_id: 0,
+          username: "",
+          section_name: "",
+          tasks: [],
+        },
+      ],
     };
   }
   componentDidMount = () => {
@@ -21,13 +29,32 @@ class Home extends Component {
       this.setState({ redirect: "/login" });
     } else {
       callAPI(`/tasks/${username}`, "GET", {})
-        // .then((response) => response.json())
-        .then((response) => this.setState({ tasks: response.data }));
+        .then((response) => {
+          let tasks = response.data.tasks;
+          callAPI(`/sections/${username}`, "GET", {})
+            .then((response) => {
+              let sections = response.data.sections;
+              for (let i = 0; i < sections.length; ++i) {
+                sections[i].tasks = [];
+              }
+              console.log("section before init", sections);
+              for (let i = 0; i < tasks.length; ++i) {
+                for (let j = 0; j < sections.length; ++j) {
+                  if (tasks[i].section_id === sections[j].section_id) {
+                    sections[j].tasks.push(tasks[i]);
+                    break;
+                  }
+                }
+              }
+              this.setState({ sections });
+            })
+            .catch((e) => console.log(e));
+        })
+        .catch((e) => console.log(e));
     }
   };
   render() {
-    let { redirect, tasks } = this.state;
-    console.log(tasks);
+    let { redirect, sections } = this.state;
     if (redirect) {
       this.setState({ redirect: "" });
       return <Redirect to={redirect} />;
@@ -36,7 +63,7 @@ class Home extends Component {
       <Container>
         <AddTask />
         <AddSection />
-        <ToggleList tasks={tasks} />
+        <ToggleList sections={sections} />
         {/* <ProgressBar /> */}
       </Container>
     );
