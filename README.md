@@ -1,11 +1,19 @@
-### Home Page
+#Components
 
-- [ ] Navbar
-- [x] Todo
-- [ ] 
+- [x] Navigation Bar
+- [ ] Task Bar
+- [ ] Box types task
+- [ ] Logout
 
-### Login Page
+#Pages
 
-### Register Page
+- [x] Login
+- [ ] Register
+- [ ] Home: Show task users added (<b>priority</b>)
+- [ ] Info: User's information
 
-### Infomation Page
+#Feature
+
+- [ ] Calculate Productivity
+- [ ] Take user's information before creating task for `IMPROTANCE`
+- [ ] Improve: Recently, Done, Do Later Task. Animation switch between them
