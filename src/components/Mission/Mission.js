@@ -14,14 +14,16 @@ class Mission extends Component {
   }
 
   handleKeyDownCheckList = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       let message = e.target.value;
       let username = this.state.username;
       callAPI(`/missions/${username}/messages`, "POST", {
         message,
         mission_id: this.state.mission.mission_id,
       })
-        .then((response) => {})
+        .then((response) => {
+          window.location.reload();
+        })
         .catch((e) => {
           console.log(e);
         });
@@ -46,7 +48,6 @@ class Mission extends Component {
 
   render() {
     let { messages, username } = this.state;
-    console.log(this.state.messages); // OK
     return (
       <Container>
         <RoundedTitle title={this.state.mission.mission_name} />
