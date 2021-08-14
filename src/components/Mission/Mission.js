@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Redirect } from "react-router";
 import { Container, Form } from "react-bootstrap";
 import RoundedTitle from "../RoundedTitle/RoundedTitle";
 import ItemList from "../ItemList/ItemList";
@@ -15,7 +14,7 @@ class Mission extends Component {
   }
 
   handleKeyDownCheckList = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       let message = e.target.value;
       let username = this.state.username;
       callAPI(`/missions/${username}/messages`, "POST", {
@@ -46,7 +45,6 @@ class Mission extends Component {
   };
 
   render() {
-    console.log(this.state.messages); // OK
     return (
       <Container>
         <RoundedTitle title={this.state.mission.mission_name} />

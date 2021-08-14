@@ -10,7 +10,7 @@ function Task({ task, index }) {
   const formated_date = moment(task.due_date).format("dddd, MMMM Do YYYY");
   const is_urgent = duration < 3 && duration > -1 ? true : false; // if the task is due in 3 days -> it's urgent
   let className = "task";
-  if (task.is_done == 1) {
+  if (task.is_done === 1) {
     className = "task-done";
   } else if (task.is_importance === 1 && is_urgent) {
     className = "task-urgent-important";
