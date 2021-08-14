@@ -1,13 +1,16 @@
-FROM node:12.18.3
+# FROM node:12.18.3
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY ["package.json", "package-lock.json", "./"]
+# COPY ["package.json", "package-lock.json", "./"]
 
-RUN yarn install 
+# RUN yarn install 
 
-COPY . .
+# COPY . .
 
-EXPOSE 3000
+# EXPOSE 3000
 
-ENTRYPOINT ["yarn", "start"]
+# ENTRYPOINT ["yarn", "start"]
+
+FROM nginx:1.17
+COPY build/ /usr/share/nginx/html
