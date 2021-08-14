@@ -22,6 +22,29 @@ class Navigation extends Component {
     if (this.state.isLogIn) {
       LogOut = <Button onClick={this.handleLogoutClick}>Logout</Button>;
     }
+
+    let NavBar = (
+      <>
+        <LinkContainer to="/login">
+          <Nav.Link>Login</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/register">
+          <Nav.Link>Register</Nav.Link>
+        </LinkContainer>
+      </>
+    );
+    if (this.state.isLogIn) {
+      NavBar = (
+        <>
+          <LinkContainer to="/home">
+            <Nav.Link>Home</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/reward">
+            <Nav.Link>Reward</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    }
     return (
       <Navbar bg="light" expand="lg">
         <LinkContainer to="/">
@@ -29,20 +52,7 @@ class Navigation extends Component {
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <LinkContainer to="/home">
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/reward">
-              <Nav.Link>Reward</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/login">
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/register">
-              <Nav.Link>Register</Nav.Link>
-            </LinkContainer>
-          </Nav>
+          <Nav className="mr-auto">{NavBar}</Nav>
         </Navbar.Collapse>
         {LogOut}
       </Navbar>

@@ -16,6 +16,7 @@ class Reward extends Component {
   }
 
   componentDidMount = () => {
+    clicked = 0;
     const username = window.localStorage.getItem("username");
     if (username === null) {
       this.setState({ redirect: "/login" });
@@ -68,7 +69,7 @@ class Reward extends Component {
       // Lower rateOfGrowth allows for a higher branchLength
       // lower rateOfGrowth means the branchSpread should
       // be lower as well to keep it from getting too wide
-      this.branchLength = 100 + productivity * 500; //80 - 250
+      this.branchLength = 100 + productivity * 400; //80 - 250
 
       this.rateOfGrowth = 1;
 

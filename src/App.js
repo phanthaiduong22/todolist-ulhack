@@ -9,6 +9,6 @@ class App extends Component {
   render() {
     return <Redirect to={"/home"} replace />;
   }
-	}
+}
 
 export default App;
