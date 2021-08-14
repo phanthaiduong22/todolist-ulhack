@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Container } from "react-bootstrap";
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import callAPI from "../../utils/apiCaller";
 import Alert from "../../components/Alert/Alert";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Register extends Component {
   constructor() {
@@ -16,7 +15,7 @@ class Register extends Component {
       redirect: "",
     };
 
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangeRePassword = this.handleChangeRePassword.bind(this);
     this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
@@ -27,7 +26,7 @@ class Register extends Component {
       this.setState({ redirect: "/home" });
     }
   };
-  handleChangeEmail(event) {
+  handleChangeUsername(event) {
     this.setState({ username: event.target.value });
   }
   handleChangePassword(event) {
@@ -48,11 +47,10 @@ class Register extends Component {
       password,
     })
       .then((response) => {
-        window.localStorage.setItem("username", response.data.username);
-        window.location.reload();
+        this.setState({ redirect: "/login" });
       })
       .catch((e) => {
-        this.setState({ error: "Login unsuccessful" });
+        this.setState({ error: "Register unsuccessful" });
       });
     event.preventDefault();
   }
@@ -78,9 +76,9 @@ class Register extends Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
-                value={this.state.email}
-                onChange={this.handleChangeEmail}
+                placeholder="Enter username"
+                value={this.state.username}
+                onChange={this.handleChangeUsername}
               />
             </div>
 
