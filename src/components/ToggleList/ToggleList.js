@@ -7,9 +7,9 @@ class ToggleList extends Component {
     return (
       <>
         <Container>
-          {this.props.sections.map((section) => {
+          {this.props.sections.map((section, index) => {
             return (
-              <Row>
+              <Row key={index}>
                 <Col>
                   <Accordion>
                     <Accordion.Item>
@@ -18,7 +18,7 @@ class ToggleList extends Component {
                       </Accordion.Header>
                       <Accordion.Body>
                         {section.tasks.map((task, index) => {
-                          return <Task task={task} index={index} />;
+                          return <Task task={task} index={index} key={index} />;
                         })}
                       </Accordion.Body>
                     </Accordion.Item>

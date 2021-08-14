@@ -107,10 +107,15 @@ class AddTask extends Component {
                   aria-label="Default select example"
                   onClick={this.handleDropDownSelect}
                 >
-                  <option value={-1}>Choose section</option>
+                  <option value={-1} key={-1}>
+                    Choose section
+                  </option>
                   {sections.map((section) => {
                     return (
-                      <option value={section.section_id}>
+                      <option
+                        value={section.section_id}
+                        key={section.section_id}
+                      >
                         {section.section_name}
                       </option>
                     );

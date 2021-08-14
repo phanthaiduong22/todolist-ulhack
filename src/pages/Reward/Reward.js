@@ -380,7 +380,7 @@ class Reward extends Component {
             </AnimatedProgressProvider>
           </div>
 
-          <div class="main">
+          <div className="main">
             <canvas id="tree"></canvas>
           </div>
         </Container>

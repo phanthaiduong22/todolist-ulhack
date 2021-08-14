@@ -36,7 +36,7 @@ function Task({ task, index }) {
 
   return (
     <>
-      <section className={className}>
+      <section className={className} key={index}>
         <div className={`text-gray p-3 mb-2 rounded border border-dark`}>
           <Container>
             <Row className="align-items-center">
