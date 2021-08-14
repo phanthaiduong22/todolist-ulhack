@@ -9,6 +9,7 @@ class Mission extends Component {
 	  super(props);
 	  this.state = {
 		messages: [],
+		test_array: [1,2,3,4]
 	  };
 	  this.state.mission = this.props.mission
 	  this.state.username = this.props.username
@@ -39,7 +40,7 @@ class Mission extends Component {
 	      .then((response) => {
 	        this.setState({ messages: response.data.messages });
 			// console.log(`${this.state.messages}`)
-			console.log(response.data.messages) // OK
+			// console.log(response.data.messages) // OK
 	      })
 	      .catch((e) => {
 	        console.log(e);
@@ -48,17 +49,12 @@ class Mission extends Component {
 	};
   
 	render() {
-	  let { redirect } = this.state;
-	  if (redirect) {
-		this.setState({ redirect: "" });
-		return <Redirect to={redirect} replace />;
-	  }
-	  console.log(`messages:${this.state.messages}`)
+	  console.log(this.state.messages) // OK
 	  return (
-		<Container>
 		  <Container>
 			<RoundedTitle title={this.state.mission.mission_name} />
-			<ItemList messages = {this.state.messages}/>
+			<ItemList messages={this.state.messages}/>
+			{/* <ItemList messages={this.state.test_array}/> */}
 			<Form.Control 
 			  className = "p-3 mb-4"
 			  size="lg"
@@ -67,7 +63,6 @@ class Mission extends Component {
 			  onKeyDown={this.handleKeyDownCheckList}
 			/>
 		  </Container>
-		</Container>
 	  );
 	}
 }
