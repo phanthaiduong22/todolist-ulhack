@@ -17,8 +17,8 @@ class ToggleList extends Component {
                         {section.section_name}
                       </Accordion.Header>
                       <Accordion.Body>
-                        {section.tasks.map((task) => {
-                          return <Task task={task} />;
+                        {section.tasks.map((task, index) => {
+                          return <Task task={task} index={index} />;
                         })}
                       </Accordion.Body>
                     </Accordion.Item>

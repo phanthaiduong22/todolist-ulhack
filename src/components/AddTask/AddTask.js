@@ -29,6 +29,7 @@ class AddTask extends Component {
         username,
       })
         .then((response) => {
+          console.log(response.data.sections)
           this.setState({ sections: response.data.sections });
         })
         .catch((e) => {
@@ -72,6 +73,7 @@ class AddTask extends Component {
   };
   handleDropDownSelect = (e) => {
     this.setState({ section_id: Number(e.target.value) });
+    console.log(e.target.value)
   };
 
   render() {
