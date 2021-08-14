@@ -37,7 +37,6 @@ class Home extends Component {
               for (let i = 0; i < sections.length; ++i) {
                 sections[i].tasks = [];
               }
-              console.log("section before init", sections);
               for (let i = 0; i < tasks.length; ++i) {
                 for (let j = 0; j < sections.length; ++j) {
                   if (tasks[i].section_id === sections[j].section_id) {
