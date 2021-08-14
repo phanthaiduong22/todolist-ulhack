@@ -45,6 +45,9 @@ class Navigation extends Component {
           <LinkContainer to="/todoist">
             <Nav.Link>Todolist</Nav.Link>
           </LinkContainer>
+          <LinkContainer to="/mymission">
+            <Nav.Link>My mission and vision</Nav.Link>
+          </LinkContainer>
         </>
       );
     }
