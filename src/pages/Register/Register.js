@@ -47,8 +47,7 @@ class Register extends Component {
       password,
     })
       .then((response) => {
-        window.localStorage.setItem("username", response.data.username);
-        window.location.reload();
+        this.setState({ redirect: "/login" });
       })
       .catch((e) => {
         this.setState({ error: "Login unsuccessful" });

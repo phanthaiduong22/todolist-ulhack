@@ -1,25 +1,41 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
-import { Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import AnimatedProgressProvider from "../../components/AnimatedProgressProvider/AnimatedProgressProvider";
+import { easeQuadInOut } from "d3-ease";
 import callAPI from "../../utils/apiCaller";
-import Alert from "../../components/Alert/Alert";
-import { Link, Redirect } from "react-router-dom";
-import "./Reward.css";
+import { Redirect } from "react-router-dom";
 
 let productivity = 0;
-
+let clicked = 0;
 class Reward extends Component {
   constructor(props) {
     super(props);
-    this.state = { productivity: 1 };
+    this.state = { productivity: 0.1, clicked: false };
   }
 
   componentDidMount = () => {
-    productivity = this.state.productivity;
+    const username = window.localStorage.getItem("username");
+    if (username === null) {
+      this.setState({ redirect: "/login" });
+    } else {
+      callAPI(`/tasks/${username}/productivity`, "GET", {})
+        .then((response) => {
+          this.setState({ productivity: response.data.productivity });
+          productivity = this.state.productivity;
+          this.createTree();
+        })
+        .catch((e) => {
+          return;
+        });
+    }
   };
 
   createTree() {
     // Constructor
+    if (clicked > 0) return;
+    clicked = 1;
     var TreeView = function ($element) {
       this.isEnabled = false;
 
@@ -31,7 +47,7 @@ class Reward extends Component {
 
       //   this.element.width =
       //     window.innerWidth / 2 > 500 ? window.innerWidth / 2 : 500;
-      this.element.width = window.innerWidth;
+      this.element.width = window.innerWidth / 1.5;
 
       this.baseWidth = 20;
 
@@ -52,7 +68,7 @@ class Reward extends Component {
       // Lower rateOfGrowth allows for a higher branchLength
       // lower rateOfGrowth means the branchSpread should
       // be lower as well to keep it from getting too wide
-      this.branchLength = 100 + productivity * 300; //80 - 250
+      this.branchLength = 100 + productivity * 500; //80 - 250
 
       this.rateOfGrowth = 1;
 
@@ -334,15 +350,51 @@ class Reward extends Component {
   }
 
   render() {
+    let { redirect } = this.state;
+    if (redirect) {
+      this.setState({ redirect: "" });
+      return <Redirect to={redirect} replace />;
+    }
+    const percentage = this.state.productivity * 100;
     return (
       <>
-        <Button onClick={this.createTree}>Show your tree</Button>
-        <div class="main">
-          <canvas id="tree"></canvas>
-        </div>
+        <Container>
+          <div style={{ width: 100, height: 100 }}>
+            <AnimatedProgressProvider
+              valueStart={0}
+              valueEnd={percentage}
+              duration={1.4}
+              easingFunction={easeQuadInOut}
+            >
+              {(value) => {
+                const roundedValue = Math.round(value);
+                return (
+                  <CircularProgressbar
+                    value={value}
+                    text={`${roundedValue}%`}
+                    styles={buildStyles({ pathTransition: "none" })}
+                  />
+                );
+              }}
+            </AnimatedProgressProvider>
+          </div>
+
+          <div class="main">
+            <canvas id="tree"></canvas>
+          </div>
+        </Container>
       </>
     );
   }
 }
 
 export default Reward;
+{
+  /* <LineProgressBar
+percent={65}
+progressColor="linear-gradient(to right, #78abe9, #74dad8, #ec7cac)"
+rounded={36}
+height={36}
+containerColor="#f0d4da"
+/> */
+}
