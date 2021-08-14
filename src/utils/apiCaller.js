@@ -9,4 +9,3 @@ export default function callAPI(endpoint, method = "POST", data) {
     data: data,
   });
 }
-

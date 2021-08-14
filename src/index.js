@@ -10,6 +10,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
 import Reward from "./pages/Reward/Reward";
+import Todoist from "./pages/Todoist/Todoist";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.render(
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/reward" component={Reward} />
+        <Route path="/todoist" component={Todoist} />
       </Switch>
     </Router>
   </React.StrictMode>,

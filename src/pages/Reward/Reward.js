@@ -7,16 +7,15 @@ import { easeQuadInOut } from "d3-ease";
 import callAPI from "../../utils/apiCaller";
 import { Redirect } from "react-router-dom";
 
-let productivity = 0;
+let productivity = 0.1;
 let clicked = 0;
 class Reward extends Component {
   constructor(props) {
     super(props);
-    this.state = { productivity: 0.1, clicked: false };
+    this.state = { productivity: 0.1 };
   }
 
   componentDidMount = () => {
-    clicked = 0;
     const username = window.localStorage.getItem("username");
     if (username === null) {
       this.setState({ redirect: "/login" });
@@ -25,7 +24,9 @@ class Reward extends Component {
         .then((response) => {
           this.setState({ productivity: response.data.productivity });
           productivity = this.state.productivity;
-          this.createTree();
+          if (clicked === 0) {
+            this.createTree();
+          } else clicked = 1;
         })
         .catch((e) => {
           return;
@@ -33,10 +34,8 @@ class Reward extends Component {
     }
   };
 
-  createTree() {
+  createTree = () => {
     // Constructor
-    if (clicked > 0) return;
-    clicked = 1;
     var TreeView = function ($element) {
       this.isEnabled = false;
 
@@ -46,8 +45,6 @@ class Reward extends Component {
 
       this.element.height = 600;
 
-      //   this.element.width =
-      //     window.innerWidth / 2 > 500 ? window.innerWidth / 2 : 500;
       this.element.width = window.innerWidth / 1.5;
 
       this.baseWidth = 20;
@@ -69,7 +66,7 @@ class Reward extends Component {
       // Lower rateOfGrowth allows for a higher branchLength
       // lower rateOfGrowth means the branchSpread should
       // be lower as well to keep it from getting too wide
-      this.branchLength = 100 + productivity * 400; //80 - 250
+      this.branchLength = 100 + productivity * 250;
 
       this.rateOfGrowth = 1;
 
@@ -127,7 +124,7 @@ class Reward extends Component {
 
       if (branchIndex === 0 && this.branchCount === 1) {
         var newX = Math.random() * 0.5;
-        newX *= Math.floor(Math.random() * 2) === 1 ? 1 : -1;
+        newX *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
         this.branches[branchIndex].xPos += newX;
       } else if (branchIndex < this.branchCount / 2) {
         this.branches[branchIndex].xPos -= Math.random() * this.branchSpread;
@@ -173,7 +170,7 @@ class Reward extends Component {
       this.currentStrokeWidth *= 2 / 3;
       this.branchLength *= 2 / 3;
 
-      for (var j = 0; i < this.branchCount; j++) {
+      for (var i = 0; i < this.branchCount; i++) {
         var request = window.requestAnimationFrame(
           this.taperedTrunk.bind(this, i)
         );
@@ -348,7 +345,7 @@ class Reward extends Component {
     };
 
     return new TreeView(document.getElementById("tree"));
-  }
+  };
 
   render() {
     let { redirect } = this.state;
@@ -379,7 +376,6 @@ class Reward extends Component {
               }}
             </AnimatedProgressProvider>
           </div>
-
           <div className="main">
             <canvas id="tree"></canvas>
           </div>
