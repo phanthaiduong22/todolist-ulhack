@@ -50,7 +50,7 @@ class Register extends Component {
         this.setState({ redirect: "/login" });
       })
       .catch((e) => {
-        this.setState({ error: "Login unsuccessful" });
+        this.setState({ error: "Register unsuccessful" });
       });
     event.preventDefault();
   }
