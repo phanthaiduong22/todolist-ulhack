@@ -4,6 +4,7 @@
 $primary: #bfd028;
 
 .task-done {
+//   background: #45e35787 !important
   background: rgb(69,227,87);
   background: linear-gradient(90deg, rgba(69,227,87,1) 0%, rgba(69,227,87,0.6418942577030813) 51%, rgba(69,227,87,0) 100%);
   // background: rgb(63,94,251);
@@ -16,8 +17,10 @@ $primary: #bfd028;
 }
 
 .task-urgent{
+//   background: #e147478c !important
   background: rgb(98,0,255);
   background: linear-gradient(90deg, rgba(98,0,255,0.773546918767507) 0%, rgba(98,0,255,0.5186449579831933) 51%, rgba(98,0,255,0.1516981792717087) 92%);
+
 }
 
 .task-urgent-important{
