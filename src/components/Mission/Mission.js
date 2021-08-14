@@ -8,39 +8,38 @@ class Mission extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {
-		tasks: [],
+		messages: [],
 	  };
 	  this.state.mission = this.props.mission
 	  this.state.username = this.props.username
 	}
+
 	handleKeyDownCheckList = (e) => {
 	  if (e.keyCode == 13) {
-		let messeage = e.target.value;
+		let message = e.target.value;
 		let username = this.state.username
 		callAPI(`/missions/${username}/messages`, "POST", {
-	      username,
-		  messeage,
+		  message,
 		  mission_id: this.state.mission.mission_id
 	    })
-	      .then((response) => {
-	        this.setState({ tasks: response.data.tasks });
-	      })
+	      .then((response) => {})
 	      .catch((e) => {
 	        console.log(e);
 	      });
 	  }
 	};
+
 	componentDidMount = () => {
 	  const username = localStorage.getItem("username");
 	  if (username === null) {
 	    this.setState({ redirect: "/login" });
 	  } else {
-	    console.log("hi");
-	    callAPI(`/tasks/${username}/today`, "GET", {
-	      username,
-	    })
+		const mission_id = this.state.mission.mission_id
+	    callAPI(`/missions/${mission_id}/${username}/messages`, "GET", {})
 	      .then((response) => {
-	        this.setState({ tasks: response.data.tasks });
+	        this.setState({ messages: response.data.messages });
+			// console.log(`${this.state.messages}`)
+			console.log(response.data.messages) // OK
 	      })
 	      .catch((e) => {
 	        console.log(e);
@@ -54,11 +53,12 @@ class Mission extends Component {
 		this.setState({ redirect: "" });
 		return <Redirect to={redirect} replace />;
 	  }
+	  console.log(`messages:${this.state.messages}`)
 	  return (
 		<Container>
 		  <Container>
 			<RoundedTitle title={this.state.mission.mission_name} />
-			<ItemList />
+			<ItemList messages = {this.state.messages}/>
 			<Form.Control 
 			  className = "p-3 mb-4"
 			  size="lg"
