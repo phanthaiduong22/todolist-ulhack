@@ -12,7 +12,8 @@ class MissionAndVision extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      missions: [],
+      username: ""
     };
   }
   handleKeyDownCheckList = (e) => {
@@ -21,28 +22,29 @@ class MissionAndVision extends Component {
     }
   };
   componentDidMount = () => {
-    // const username = localStorage.getItem("username");
-    // if (username === null) {
-    //   this.setState({ redirect: "/login" });
-    // } else {
-    //   console.log("hi");
-    //   callAPI(`/tasks/${username}/today`, "GET", {
-    //     username,
-    //   })
-    //     .then((response) => {
-    //       this.setState({ tasks: response.data.tasks });
-    //     })
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-    // }
+    const username = localStorage.getItem("username");
+    if (username === null) {
+      this.setState({ redirect: "/login" });
+    } else {
+      this.setState({username})
+      callAPI(`/missions/${username}`, "GET", {})
+        .then((response) => {
+          this.setState({ missions: response.data.missions });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   };
 
   render() {
     return (
       <Container>
         <AddMission />
-        <Mission />
+        {this.state.missions.map((mission) => {
+          return <Mission mission = {mission} username = {this.state.username}/>
+          }
+        )}
       </Container>
     )
   }

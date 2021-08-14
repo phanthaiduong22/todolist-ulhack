@@ -11,21 +11,21 @@ class AddMission extends Component {
     super();
     this.state = {
       username: "",
-      section_name: "",
+      mission_name: "",
     };
   }
   componentDidMount = () => {
     const username = localStorage.getItem("username");
     this.setState({ username });
   };
-  sectionNameOnChange = (e) => {
-    this.setState({ section_name: e.target.value });
+  missionNameOnChange = (e) => {
+    this.setState({ mission_name: e.target.value });
   };
   onSubmit = () => {
-    let { username, section_name } = this.state;
-    callAPI("/sections", "POST", {
+    let { username, mission_name } = this.state;
+    callAPI(`/missions/${username}`, "POST", {
       username,
-      section_name,
+      mission_name,
     })
       .then((response) => {
         this.handleClose();
@@ -47,21 +47,21 @@ class AddMission extends Component {
       <>
         <Button variant="primary" onClick={this.handleShow}>
           <FontAwesomeIcon icon={faPlus} /> {""}
-          Add Section
+          Add mission
         </Button>
         <Modal show={this.state.showModal} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Section</Modal.Title>
+            <Modal.Title>Add Mission</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
               <Form.Group className="mb" controlId="exampleForm.ControlInput1">
-                <Form.Label>Section name</Form.Label>
+                <Form.Label>Mission name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Your section name"
-                  onChange={this.sectionNameOnChange}
-                  value={this.state.section_name}
+                  placeholder="Your mission name"
+                  onChange={this.missionNameOnChange}
+                  value={this.state.mission_name}
                 />
               </Form.Group>
             </Form>
