@@ -44,15 +44,11 @@ class AddTask extends Component {
 
   checkBoxOnClick = (e) => {
     let count = this.state.importance_sum
-    // this.setState({ importance_sum: e.target.checked  });
-    // console.log(`before setState, check box: ${e.target.checked}; importance_sum: ${this.state.importance_sum}`)
     if (e.target.checked) {
       this.setState({ importance_sum: count + 1 })
     } else {
       this.setState({ importance_sum: count - 1 })
     }
-    // this.setState({ importance_sum: this.state.importance_sum + 1});
-    // console.log(`after setState, check box: ${e.target.checked}; importance_sum: ${this.state.importance_sum}`)
   };
 
   setDate = (date) => {
