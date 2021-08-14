@@ -3,6 +3,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { Redirect } from "react-router-dom";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
 import Task from "../../components/Task/Task";
+import callAPI from "../../utils/apiCaller";
 
 class Todoist extends Component {
   constructor(props) {
@@ -16,6 +17,17 @@ class Todoist extends Component {
     const username = localStorage.getItem("username");
     if (username === null) {
       this.setState({ redirect: "/login" });
+    } else {
+      console.log("hi");
+      callAPI(`/tasks/${username}/today`, "GET", {
+        username,
+      })
+        .then((response) => {
+          this.setState({ tasks: response.data.tasks });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
   };
 

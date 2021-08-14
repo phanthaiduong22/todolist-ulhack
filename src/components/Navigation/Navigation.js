@@ -42,7 +42,7 @@ class Navigation extends Component {
           <LinkContainer to="/reward">
             <Nav.Link>Reward</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/todolist">
+          <LinkContainer to="/todoist">
             <Nav.Link>Todolist</Nav.Link>
           </LinkContainer>
         </>
