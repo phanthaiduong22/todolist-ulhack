@@ -18,7 +18,6 @@ class Todoist extends Component {
     if (username === null) {
       this.setState({ redirect: "/login" });
     } else {
-      console.log("hi");
       callAPI(`/tasks/${username}/today`, "GET", {
         username,
       })

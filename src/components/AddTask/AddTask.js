@@ -43,11 +43,11 @@ class AddTask extends Component {
   };
 
   checkBoxOnClick = (e) => {
-    let count = this.state.importance_sum
+    let count = this.state.importance_sum;
     if (e.target.checked) {
-      this.setState({ importance_sum: count + 1 })
+      this.setState({ importance_sum: count + 1 });
     } else {
-      this.setState({ importance_sum: count - 1 })
+      this.setState({ importance_sum: count - 1 });
     }
   };
 
@@ -56,17 +56,16 @@ class AddTask extends Component {
   };
 
   onSubmit = () => {
-    let { username, task_name, importance_sum, is_importance, due_date, section_id } =
-      this.state;
-    console.log(importance_sum)
-    // if  (importance_sum < 5) {
-    //   is_importance = 0
-    // } else 
-    // if (importance_sum < 7) {
-    //   is_importance = 1
-    // } else is_importance = 2 
+    let {
+      username,
+      task_name,
+      importance_sum,
+      is_importance,
+      due_date,
+      section_id,
+    } = this.state;
     if (importance_sum > 6) {
-      is_importance = true
+      is_importance = true;
     }
     const dateTime = moment(due_date, "DD/MM/YYYY").format("YYYY-MM-DD");
     callAPI("/tasks", "POST", {
@@ -92,7 +91,6 @@ class AddTask extends Component {
   };
   handleDropDownSelect = (e) => {
     this.setState({ section_id: Number(e.target.value) });
-    console.log(e.target.value);
   };
 
   render() {
@@ -143,78 +141,78 @@ class AddTask extends Component {
                 </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3 mt-3" controlId="formBasicCheckbox">
-                <hr/>
+                <hr />
                 <Form.Label> Important survey </Form.Label>
                 <Form.Check
                   type="checkbox"
                   label="This task helps to achieve your big goal."
                   onChange={this.checkBoxOnClick}
-                  id = "1"
+                  id="1"
                 />
                 <Form.Check
                   type="checkbox"
                   label=" This task should be done as perfectly as possible."
                   onChange={this.checkBoxOnClick}
-                  id = "2"
+                  id="2"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label=" This task is of great value."
                   onChange={this.checkBoxOnClick}
-                  id = "3"
+                  id="3"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="This task might take a long time due to careful research."
                   onChange={this.checkBoxOnClick}
-                  id = "4"
+                  id="4"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="This task reflects your ability to other people."
                   onChange={this.checkBoxOnClick}
-                  id = "5"
+                  id="5"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="This task must be handed on time."
                   onChange={this.checkBoxOnClick}
-                  id = "6"
+                  id="6"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="You care about this task more than other tasks."
                   onChange={this.checkBoxOnClick}
-                  id = "7"
+                  id="7"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="You can get nervous if this task is out of your control."
                   onChange={this.checkBoxOnClick}
-                  id = "8"
+                  id="8"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="You have only one chance to do this task properly."
                   onChange={this.checkBoxOnClick}
-                  id = "9"
+                  id="9"
                 />
 
                 <Form.Check
                   type="checkbox"
                   label="If you fail in this task, you can redo but it money-consuming."
                   onChange={this.checkBoxOnClick}
-                  id = "10"
+                  id="10"
                 />
               </Form.Group>
-              <hr/>
+              <hr />
               <Form.Label> Due Date </Form.Label>
               <DatePicker
                 selected={this.state.due_date}

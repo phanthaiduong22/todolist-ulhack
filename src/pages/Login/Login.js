@@ -16,7 +16,6 @@ class Login extends Component {
   }
   componentDidMount = () => {
     const username = localStorage.getItem("username");
-    console.log(username);
     if (username !== null) {
       this.setState({ redirect: "/home" });
     }
