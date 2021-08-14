@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, Form, DropdownButton, Dropdown } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import DatePicker from "react-datepicker";
@@ -29,7 +29,6 @@ class AddTask extends Component {
         username,
       })
         .then((response) => {
-          console.log(response.data.sections)
           this.setState({ sections: response.data.sections });
         })
         .catch((e) => {
@@ -73,7 +72,7 @@ class AddTask extends Component {
   };
   handleDropDownSelect = (e) => {
     this.setState({ section_id: Number(e.target.value) });
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
 
   render() {

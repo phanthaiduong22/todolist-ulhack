@@ -127,7 +127,7 @@ class Reward extends Component {
 
       if (branchIndex === 0 && this.branchCount === 1) {
         var newX = Math.random() * 0.5;
-        newX *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+        newX *= Math.floor(Math.random() * 2) === 1 ? 1 : -1;
         this.branches[branchIndex].xPos += newX;
       } else if (branchIndex < this.branchCount / 2) {
         this.branches[branchIndex].xPos -= Math.random() * this.branchSpread;
@@ -173,7 +173,7 @@ class Reward extends Component {
       this.currentStrokeWidth *= 2 / 3;
       this.branchLength *= 2 / 3;
 
-      for (var i = 0; i < this.branchCount; i++) {
+      for (var j = 0; i < this.branchCount; j++) {
         var request = window.requestAnimationFrame(
           this.taperedTrunk.bind(this, i)
         );
@@ -388,14 +388,4 @@ class Reward extends Component {
     );
   }
 }
-
 export default Reward;
-{
-  /* <LineProgressBar
-percent={65}
-progressColor="linear-gradient(to right, #78abe9, #74dad8, #ec7cac)"
-rounded={36}
-height={36}
-containerColor="#f0d4da"
-/> */
-}
