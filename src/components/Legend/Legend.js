@@ -1,26 +1,40 @@
-import React, { Component } from "react";
-import { OverlayTrigger, Button, Popover } from "react-bootstrap";
+import React from "react";
+import { OverlayTrigger, Button, Popover, Container, Row } from "react-bootstrap";
+import "./Legend.scss"
+
 
 function Legend() {
-  const popover = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
-      <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
-      </Popover.Body>
-    </Popover>
-  );
+	const popover = (
+		<Popover id="popover-basic">
+			<Popover.Header as="h3">Task Color</Popover.Header>
+			<Popover.Body>
+				<div className = "task-done mb-2 rounded border border-dark ">
+					<h5 className="mt-2 ml-2"> This task is done</h5>
+				</div>
+				<div className = "task-important mb-2 rounded border border-dark">
+					<h5 className="mt-2 ml-2"> This task is important</h5>
+				</div>
+				<div className = "task-urgent mb-2 rounded border border-dark">
+					<h5 className="mt-2 ml-2"> This task is urgent</h5>
+				</div>
+				<div className = "task-urgent-important mb-2 rounded border border-dark">
+					<h5 className="mt-2 ml-2"> This task is both urgent and important</h5>
+				</div>
+			</Popover.Body>
+		</Popover>
+	);
 
-  return (
-    <>
-      <div className={`text-gray p-3 mb-2 rounded border border-dark`}>
-        <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
-          <Button variant="success">Click me to see</Button>
-        </OverlayTrigger>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<OverlayTrigger
+				placement="bottom"
+				delay={{ show: 150, hide: 200 }}
+				overlay={popover}
+			>
+				<Button variant="info">Legend</Button>
+			</OverlayTrigger>
+		</>
+	);
 }
 
 export default Legend;
