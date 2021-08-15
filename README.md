@@ -1,19 +1,16 @@
-# Components
+# Why?
+When I was in high school, I used to struggle with managing my work, but not time management. Hence, I always felt overwhelmed which strongly affected my daily routine and healthy lifestyle. I first learned how to categorize my work according to its importance, concentrating on the easy tasks to maximize my time. I learned to identify my importance and urgency. While tutoring at the learning center in the university, I met a lot of peers who also struggle with work management instead of time management. Therefore, I created ZGoalizt to help Gen Z optimize their productivity in learning and working by having a thorough plan to manage their workload. 
 
-- [x] Navigation Bar
-- [ ] Task Bar
-- [ ] Box types task
-- [ ] Logout
-
-# Pages
-
-- [x] Login
-- [ ] Register
-- [ ] Home: Show task users added (<b>priority</b>)
-- [ ] Info: User's information
+# Purpose
+The project for UL hackathon.
 
 # Feature
-
-- [ ] Calculate Productivity
-- [ ] Take user's information before creating task for `IMPROTANCE`
-- [ ] Improve: Recently, Done, Do Later Task. Animation switch between them
+- [x] Add Tasks
+- [x] Add Sections
+- [x] Add Missions
+- [x] Add Message In Mission
+- [x] Calculate Productivity To Grow The Tree (Reward)
+- [x] Shows tasks have to do today.
+- [x] Login
+- [x] Logout
+- [x] Register
