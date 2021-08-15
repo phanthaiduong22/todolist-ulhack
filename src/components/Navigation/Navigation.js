@@ -56,7 +56,7 @@ class Navigation extends Component {
         <LinkContainer to="/">
           <Navbar.Brand>
             <img
-              // alt=""
+              alt="anh logo zgozlizt"
               src="./favicon.ico"
               width="30"
               height="30"

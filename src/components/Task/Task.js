@@ -1,9 +1,8 @@
 import React from "react";
-import { Row, Col, Container, Button, OverlayTrigger } from "react-bootstrap";
+import { Row, Col, Container, Button} from "react-bootstrap";
 import "./Task.scss";
 import moment from "moment";
 import callAPI from "../../utils/apiCaller";
-import { Popover } from "bootstrap";
 
 
 function Task({ task, index }) {

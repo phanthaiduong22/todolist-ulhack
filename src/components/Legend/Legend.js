@@ -1,5 +1,5 @@
 import React from "react";
-import { OverlayTrigger, Button, Popover, Container, Row } from "react-bootstrap";
+import { OverlayTrigger, Button, Popover} from "react-bootstrap";
 import "./Legend.scss"
 
 
