@@ -1,11 +1,10 @@
 import React, { Component, useState, useRef } from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Overlay, OverlayTrigger } from "react-bootstrap";
+import { Container, Overlay, OverlayTrigger, Button } from "react-bootstrap";
 import ToggleList from "../../components/ToggleList/ToggleList";
 import AddTask from "../../components/AddTask/AddTask";
 import AddSection from "../../components/AddSection/AddSection";
 import callAPI from "../../utils/apiCaller";
-import { Button, Popover } from "bootstrap";
 import Legend from "../../components/Legend/Legend";
 
 class Home extends Component {
@@ -55,7 +54,6 @@ class Home extends Component {
     }
   };
 
-
   render() {
     let { redirect, sections } = this.state;
     if (redirect) {
@@ -67,14 +65,10 @@ class Home extends Component {
         <AddTask />
         <AddSection />
         <Legend />
-        {/* <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-					<Button variant="outline-primary">INFO</Button>
-				</OverlayTrigger> */}
         <ToggleList sections={sections} />
-        {/* <ProgressBar /> */}
       </Container>
     );
   }
 }
 
-export default Home
+export default Home;
