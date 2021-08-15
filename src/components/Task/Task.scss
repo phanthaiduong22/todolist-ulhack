@@ -48,9 +48,10 @@ $primary: #bfd028;
   font-size: x-large;
 }
 .task,
-.task-checked,
+.task-done,
 .task-important,
-.task-urgent {
+.task-urgent,
+.task-urgent-important {
   vertical-align: middle;
   &:hover {
     box-shadow: $todo-hover;

@@ -1,6 +1,5 @@
-import { Popover, Tooltip } from "bootstrap";
 import React, { Component } from "react";
-import { OverlayTrigger, Button } from "react-bootstrap";
+import { OverlayTrigger, Button, Popover } from "react-bootstrap";
 
 function Legend() {
   const popover = (
@@ -16,7 +15,7 @@ function Legend() {
   return (
     <>
       <div className={`text-gray p-3 mb-2 rounded border border-dark`}>
-        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+        <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
           <Button variant="success">Click me to see</Button>
         </OverlayTrigger>
       </div>
