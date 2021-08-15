@@ -4,13 +4,5 @@ When I was in high school, I used to struggle with managing my work, but not tim
 # Purpose
 This is front-end for the ZGoalizt App.
 
-# Feature
-- [x] Add Tasks
-- [x] Add Sections
-- [x] Add Missions
-- [x] Add Message In Mission
-- [x] Calculate Productivity To Grow The Tree (Reward)
-- [x] Shows tasks have to do today.
-- [x] Login
-- [x] Logout
-- [x] Register
+# Reference
+For backend code: https://github.com/phanthaiduong22/be-todolist-ulhack
