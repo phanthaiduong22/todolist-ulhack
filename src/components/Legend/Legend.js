@@ -1,25 +1,22 @@
-import { Popover, Tooltip } from "bootstrap";
-import React, { Component } from "react";
-import { OverlayTrigger, Button } from "react-bootstrap";
+import React from "react";
+import { OverlayTrigger, Button, Tooltip } from "react-bootstrap";
 
 function Legend() {
-  const popover = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
-      <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
-      </Popover.Body>
-    </Popover>
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Simple tooltip
+    </Tooltip>
   );
 
   return (
     <>
-      <div className={`text-gray p-3 mb-2 rounded border border-dark`}>
-        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-          <Button variant="success">Click me to see</Button>
-        </OverlayTrigger>
-      </div>
+      <OverlayTrigger
+        placement="right"
+        delay={{ show: 250, hide: 400 }}
+        overlay={renderTooltip}
+      >
+        <Button variant="success">Hover me to see</Button>
+      </OverlayTrigger>
     </>
   );
 }
