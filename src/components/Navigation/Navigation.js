@@ -39,14 +39,14 @@ class Navigation extends Component {
           <LinkContainer to="/home">
             <Nav.Link>Home</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/reward">
-            <Nav.Link>Reward</Nav.Link>
+          <LinkContainer to="/mymission">
+            <Nav.Link>My mission and vision</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/todoist">
             <Nav.Link>Todolist</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/mymission">
-            <Nav.Link>My mission and vision</Nav.Link>
+          <LinkContainer to="/reward">
+            <Nav.Link>Reward</Nav.Link>
           </LinkContainer>
         </>
       );
@@ -54,7 +54,16 @@ class Navigation extends Component {
     return (
       <Navbar bg="light" expand="lg">
         <LinkContainer to="/">
-          <Navbar.Brand>ZGoalizt</Navbar.Brand>
+          <Navbar.Brand>
+            <img
+              // alt=""
+              src="./favicon.ico"
+              width="30"
+              height="30"
+              className="d-inline-block align-top mr-1"
+            />{' '}
+            ZGoalizt
+          </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
